@@ -1,0 +1,21 @@
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+span{
+  min-width: 130px;
+}
+
+.spinner-container {
+  position: relative;
+  display: inline-block;
+}
+
+.spinner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  color: black;
+}
+
+

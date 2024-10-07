@@ -1,0 +1,18 @@
+<div style="min-height: 100vh" class="bg-light-subtle">
+
+  <ul ngbNav #navtabs=ngbNav class="nav-tabs justify-content-center navbar-expand-lg bg-light">
+    <li ngbNavItem>
+      <button ngbNavLink>home</button>
+      <ng-template ngbNavContent><app-home></app-home></ng-template>
+    </li>
+    <li ngbNavItem>
+      <button ngbNavLink>history</button>
+      <ng-template ngbNavContent><app-history></app-history></ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="navtabs"></div>
+
+</div>
+
+

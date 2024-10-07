@@ -1,0 +1,11 @@
+button.active{
+  color: black;
+}
+
+button{
+  color: dimgrey;
+}
+
+button:hover{
+  color: dimgrey;
+}

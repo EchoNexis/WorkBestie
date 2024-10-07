@@ -1,0 +1,36 @@
+<div *ngIf="newSession" class="gap-2 align-items-center">
+  <form>
+    <div class="input-group">
+      <span class="input-group-text">learning time</span>
+      <input class="form-control" id="duration" value="25" type="number">
+    </div>
+    <div class="input-group">
+      <span class="input-group-text">short break</span>
+      <input class="form-control" id="shortBreak" value="5" type="number">
+    </div>
+    <div class="input-group">
+      <span class="input-group-text">long break</span>
+      <input class="form-control" id="longBreak" value="15" type="number">
+    </div>
+    <div class="input-group">
+      <span class="input-group-text">no. intervall</span>
+      <input class="form-control" id="intervalCount" value="3" type="number">
+    </div>
+    <div class="input-group">
+      <button class="btn btn-primary form-control" type="button" (click)="startPomodoro()">start</button>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="!newSession">
+  <div class="spinner-container">
+    <mat-progress-spinner mode="determinate" [value]="progressValue" id="progressBar" [diameter]="200">
+    </mat-progress-spinner>
+    <p class="spinner-text">{{countdownMinutes}}:{{countdownSeconds}}</p>
+  </div>
+</div>
+
+
+
+
+
