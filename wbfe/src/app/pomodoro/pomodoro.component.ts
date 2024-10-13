@@ -61,7 +61,7 @@ export class PomodoroComponent implements OnInit {
         console.log("finished startPomodoro")
         this.newSession = false
         this.service.isTimer = true
-
+        this.setNotification()
       }
       catch (ex){
         alert("error startPomodoro")
@@ -83,5 +83,10 @@ export class PomodoroComponent implements OnInit {
 
   }
 
-  protected readonly auto = auto;
+  private setNotification(){
+    if (Notification.permission !== "denied") {
+      Notification.requestPermission().then();
+    }
+  }
+
 }

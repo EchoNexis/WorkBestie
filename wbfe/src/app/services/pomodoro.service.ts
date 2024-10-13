@@ -21,10 +21,10 @@ export class PomodoroService {
   constructor() {}
 
   public startPomodoro(info: PomodoroInfo){
-
       console.log(this.id)
       this.info = info
       this.endTime = new Date( info.startTime.getTime()+info.duration*60000 )
+    this.showNotification()
       this.id = setInterval(()=>{
         /* Logic: look at intervals, short=intervals-1, long=1, have internal counter and isBreak, will be switched
         every time, if switched, look up wich break and set time */
@@ -33,13 +33,14 @@ export class PomodoroService {
           this.info.startTime = new Date()
           if (this.isBreak){
             this.endTime = this.intervalCounter%this.info.intervals==0 ?
-              new Date(this.info.startTime.getTime()+this.info.longBreak*6000) :
-              new Date(this.info.startTime.getTime()+this.info.shortBreak*6000)
+              new Date(this.info.startTime.getTime()+this.info.longBreak*60000) :
+              new Date(this.info.startTime.getTime()+this.info.shortBreak*60000)
             this.intervalCounter++
           }
           else {
             this.endTime = new Date( info.startTime.getTime()+info.duration*60000 )
           }
+          this.showNotification()
 
         }
         let countdown = new Date(this.endTime.getTime()-(new Date().getTime()))
@@ -52,6 +53,20 @@ export class PomodoroService {
 
   public getCountdown(){
     return this.progress
+  }
+
+  private showNotification(){
+    let text = ""
+    if (!this.isBreak){
+      text="Time to focus, keep pushing!"
+    }
+    else {
+      text = this.intervalCounter%this.info.intervals==0 ?
+        "Time for a long break!" : "Time for a shor break!"
+    }
+    let not = new Notification("Pomodoro Timer",{
+      body:text
+    })
   }
 
 }
