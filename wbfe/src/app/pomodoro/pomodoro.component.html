@@ -1,34 +1,47 @@
-<div *ngIf="newSession" class="gap-2 align-items-center">
-  <form>
-    <div class="input-group">
-      <span class="input-group-text">learning time</span>
-      <input class="form-control" id="duration" value="25" type="number">
+<div>
+  <div class="card" style="height: 300px">
+    <div class="card-header">
+      <h4 style="width: 100%; text-align: center"> Pomodoro Timer</h4>
     </div>
-    <div class="input-group">
-      <span class="input-group-text">short break</span>
-      <input class="form-control" id="shortBreak" value="5" type="number">
+    <div class="card-body" style="width: 400px">
+      <div *ngIf="newSession" class="align-items-center fade m-1" [class.show]="newSession">
+        <form>
+          <div class="input-group">
+            <span class="input-group-text">Pomodoro</span>
+            <input class="form-control" id="duration" value="25" type="number">
+          </div>
+          <div class="input-group">
+            <span class="input-group-text">short break</span>
+            <input class="form-control" id="shortBreak" value="5" type="number">
+          </div>
+          <div class="input-group">
+            <span class="input-group-text">long break</span>
+            <input class="form-control" id="longBreak" value="15" type="number">
+          </div>
+          <div class="input-group">
+            <span class="input-group-text">intervals</span>
+            <input class="form-control" id="intervalCount" value="3" type="number">
+          </div>
+          <div class="input-group position-relative fixed-bottom mt-2">
+            <button class="btn btn-primary form-control" type="button" (click)="startPomodoro()">start timer</button>
+          </div>
+        </form>
+      </div>
+      <div *ngIf="!newSession" class="fade m-1" [class.show]="!newSession">
+        <div class="spinner-container justify-content-center d-flex">
+          <mat-progress-spinner mode="determinate" [value]="progressValue" id="progressBar" [diameter]="150" color="blue">
+          </mat-progress-spinner>
+          <p class="spinner-text">{{countdownMinutes}}:{{countdownSeconds}}</p>
+        </div>
+        <div class="fixed-bottom position-absolute m-4">
+          <button class="form-control btn btn-danger" (click)="resetPomodoro()">reset</button>
+        </div>
+      </div>
     </div>
-    <div class="input-group">
-      <span class="input-group-text">long break</span>
-      <input class="form-control" id="longBreak" value="15" type="number">
-    </div>
-    <div class="input-group">
-      <span class="input-group-text">no. intervall</span>
-      <input class="form-control" id="intervalCount" value="3" type="number">
-    </div>
-    <div class="input-group">
-      <button class="btn btn-primary form-control" type="button" (click)="startPomodoro()">start</button>
-    </div>
-  </form>
-</div>
-
-<div *ngIf="!newSession">
-  <div class="spinner-container">
-    <mat-progress-spinner mode="determinate" [value]="progressValue" id="progressBar" [diameter]="200">
-    </mat-progress-spinner>
-    <p class="spinner-text">{{countdownMinutes}}:{{countdownSeconds}}</p>
   </div>
 </div>
+
+
 
 
 
