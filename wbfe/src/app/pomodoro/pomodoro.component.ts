@@ -1,13 +1,11 @@
 import {Component, Injector, OnInit} from '@angular/core';
 import {NgbNav} from "@ng-bootstrap/ng-bootstrap";
 import {NgIf} from "@angular/common";
-import {auto, end} from "@popperjs/core";
 import {PomodoroService} from "../services/pomodoro.service";
 import {PomodoroInfo} from "../Entity/PomodoroInfo";
-import {Parser} from "@angular/compiler";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatButtonModule} from "@angular/material/button";
-import {MatCard, MatCardContent, MatCardHeader, MatCardTitle, MatCardTitleGroup} from "@angular/material/card";
+import {MatCard, MatCardContent, MatCardHeader, MatCardTitleGroup} from "@angular/material/card";
 
 @Component({
   selector: 'app-pomodoro',

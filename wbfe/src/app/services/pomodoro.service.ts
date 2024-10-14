@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import {interval, Subject} from "rxjs";
+import {Subject} from "rxjs";
 import {PomodoroInfo} from "../Entity/PomodoroInfo";
 import {ProgressInfo} from "../Entity/ProgressInfo";
-import {end} from "@popperjs/core";
 
 @Injectable({
   providedIn: 'root'
@@ -70,7 +69,7 @@ export class PomodoroService {
 
   private showNotification(){
     /* shows the notification when a new time has started */
-    let text = ""
+    let text
     if (!this.isBreak){
       text="Time to focus, keep pushing!"
     }
@@ -78,7 +77,7 @@ export class PomodoroService {
       text = this.intervalCounter%this.info.intervals==0 ?
         "Time for a long break!" : "Time for a shor break!"
     }
-    let not = new Notification("Pomodoro Timer",{
+    new Notification("Pomodoro Timer",{
       body:text
     })
   }

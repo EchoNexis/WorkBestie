@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {NgForOf, UpperCasePipe} from "@angular/common";
 import {MatCard, MatCardContent, MatCardHeader} from "@angular/material/card";
-import {TaskService} from "../services/task.service";
 import {FormsModule} from "@angular/forms";
 
 @Component({
