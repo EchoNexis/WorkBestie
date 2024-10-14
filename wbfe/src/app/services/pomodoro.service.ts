@@ -54,7 +54,6 @@ export class PomodoroService {
           this.showNotification()
 
         }
-        let countdown = new Date(this.endTime.getTime()-(new Date().getTime()))
         this.progress.next({
           time: new Date(this.endTime.getTime()-(new Date().getTime())),
           max: this.endTime.getTime()-this.info.startTime.getTime()
