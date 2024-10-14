@@ -1,4 +1,4 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgbNav} from "@ng-bootstrap/ng-bootstrap";
 import {NgIf} from "@angular/common";
 import {PomodoroService} from "../services/pomodoro.service";
@@ -35,10 +35,6 @@ export class PomodoroComponent implements OnInit {
   ngOnInit() {
     this.newSession = !this.service.isTimer
     if (!this.newSession) {
-      let noInfo: PomodoroInfo = {
-        startTime: new Date(), duration: 0, shortBreak: 0,
-        longBreak: 0, intervals: 0
-      }
       this.subscriber()
     }
   }
@@ -55,7 +51,7 @@ export class PomodoroComponent implements OnInit {
         longBreak: parseInt((<HTMLInputElement>document.getElementById("longBreak")).value),
         intervals: parseInt((<HTMLInputElement>document.getElementById("intervalCount")).value)
       }
-      let timeSub = this.service.startPomodoro(pomodoroInfo)
+      this.service.startPomodoro(pomodoroInfo)
       this.subscriber()
       this.newSession = false
       this.service.isTimer = true
