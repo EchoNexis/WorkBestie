@@ -1,31 +1,32 @@
 <div class="container">
-
-  <div class="row">
-
-    <div *ngFor="let n, let m of num" >
-      <div class="m-3 ">
-        <div class="card">
-          <div class="card-header">
-            <div class="input-group">
-              <span class="input-group-text">title</span>
-              <input class="form-control">
-            </div>
+  <div class="card">
+    <div class="card-header">
+      <h4 class="text-center"> Tasks</h4>
+    </div>
+    <div class="card-body" style="width: 400px">
+      <h3 class="text-center"> to do </h3>
+      <div *ngFor="let task of toDo; let i=index; trackBy: trackByFn">
+        <div class="row mt-2">
+          <div class="col-auto">
+            <button class="btn btn-success">done</button>
           </div>
-          <div class="card-body">
-            <div class="input-group">
-              <textarea class="form-control"></textarea>
-            </div>
+          <div class="col text-center">
+            <textarea  class="form-control" [(ngModel)]="toDo[i]"></textarea>
           </div>
-          <div class="input-group container justify-content-center ">
-            <button class="form-control btn btn-primary" (click)="saveTask()">save</button>
-            <button class="form-control btn btn-danger" (click)="deleteTask()">delete</button>
+          <div class="col-auto">
+            <button class="btn btn-danger btn-close" style="position: absolute; right: 20px"></button>
           </div>
-
         </div>
       </div>
 
+
+
+
+      <div class="text-center">
+        done:
+      </div>
+
+
     </div>
-
   </div>
-
 </div>

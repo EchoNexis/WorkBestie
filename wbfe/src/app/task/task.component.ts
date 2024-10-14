@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {NgForOf, UpperCasePipe} from "@angular/common";
 import {MatCard, MatCardContent, MatCardHeader} from "@angular/material/card";
 import {TaskService} from "../services/task.service";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-task',
@@ -11,22 +12,19 @@ import {TaskService} from "../services/task.service";
     MatCard,
     MatCardHeader,
     MatCardContent,
-    UpperCasePipe
+    UpperCasePipe,
+    FormsModule
   ],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css'
 })
 export class TaskComponent {
 
-  num = [1,2]
+  toDo:any = ["i",2,34,7]
 
-
- public saveTask(){
-
- }
-
-  public deleteTask(){
-    this.num.pop()
+  trackByFn(index: number, item: any): number {
+    return item.id; // oder eine andere eindeutige ID des Items
   }
+
 
 }

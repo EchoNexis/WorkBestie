@@ -8,22 +8,34 @@ import {end} from "@popperjs/core";
   providedIn: 'root'
 })
 export class PomodoroService {
+  /* @id: id of connected component
+  * @progress: returned object that contains remaining time of the current session
+  * @info: information on how to start and manage the time
+  * @endTime: global end time of the current session
+  * @intervalCounter: counts the intervals to choose between short and long break
+  * @isBreak: if the current session is a learning or break session
+  * */
 
   private id: any = null
   private progress = new Subject<ProgressInfo>()
   private info: any
   private endTime = new Date()
   public isTimer = false
-
   private intervalCounter = 1
   private isBreak = false
 
   constructor() {}
 
   public startPomodoro(info: PomodoroInfo){
-      console.log(this.id)
-      this.info = info
-      this.endTime = new Date( info.startTime.getTime()+info.duration*60000 )
+    /* Sets an Interval, not in relation with inervalCounter, that changes the @progress object.
+    * Shows notification every time the time changes (learning, short/long break).
+    * If the time of the current session is over, based on @isBreak, @intervalCounter and @info
+    * we calculate what time we have to set (learning, short/long break).
+    * Additionally we are calculating the max time in Date.getTime() for the progress Spinner.
+    * */
+    console.log(this.id)
+    this.info = info
+    this.endTime = new Date( info.startTime.getTime()+info.duration*60000 )
     this.showNotification()
       this.id = setInterval(()=>{
         /* Logic: look at intervals, short=intervals-1, long=1, have internal counter and isBreak, will be switched
@@ -52,10 +64,12 @@ export class PomodoroService {
   }
 
   public getCountdown(){
+    /* returns the current time */
     return this.progress
   }
 
   private showNotification(){
+    /* shows the notification when a new time has started */
     let text = ""
     if (!this.isBreak){
       text="Time to focus, keep pushing!"
